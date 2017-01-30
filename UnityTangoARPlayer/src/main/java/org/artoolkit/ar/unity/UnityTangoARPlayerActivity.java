@@ -63,7 +63,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.unity3d.player.UnityPlayerNativeActivity;
 import org.artoolkit.ar.base.camera.CameraPreferencesActivity;
-import jp.epson.moverio.bt200.DisplayControl;
 
 //Imports below required to ask for permission to use the camera.
 //NOTE: The support library aar file MUST be included in the Unity plugins folder.
