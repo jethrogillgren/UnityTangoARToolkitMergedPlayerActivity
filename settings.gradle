@@ -1,1 +1,1 @@
-include ':UnityARPlayer', ':aRBaseLib-release', ':classes', ':BT200Ctrl'
+include ':UnityTangoARPlayer', ':aRBaseLib-release', ':classes'

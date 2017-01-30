@@ -1,5 +1,5 @@
 /*
- *  UnityARPlayerActivity.java
+ *  UnityTangoARPlayerActivity.java
  *  ARToolKit5
  *
  *  Disclaimer: IMPORTANT:  This Daqri software is supplied to you by Daqri
@@ -71,18 +71,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
-//For Epson Moverio BT-200. BT200Ctrl.jar must be in libs/ folder.
+public class UnityTangoARPlayerActivity extends UnityPlayerNativeActivity {
 
-public class UnityARPlayerActivity extends UnityPlayerNativeActivity {
-
-    protected final static String TAG = "UnityARPlayerActivity";
+    protected final static String TAG = "UnityTangoARPlayerActivity";
 
     private FrameLayout previewInserter = null;
     private ViewGroup unityView = null;
     private CameraSurface previewView = null;
-
-    // For Epson Moverio BT-200.
-    private DisplayControl mDisplayControl = null;
 
     protected final static int PERMISSION_REQUEST_CAMERA = 77;
 
@@ -109,12 +104,6 @@ public class UnityARPlayerActivity extends UnityPlayerNativeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // For Epson Moverio BT-200.
-        if (Build.MANUFACTURER.equals("EPSON") && Build.MODEL.equals("embt2")) {
-            mDisplayControl = new DisplayControl(this);
-            //private static final int FLAG_SMARTFULLSCREEN = 0x80000000; // For Epson Moverio BT-200.
-            getWindow().addFlags(0x80000000);
-        }
 
         super.onCreate(savedInstanceState);
 
@@ -223,12 +212,6 @@ public class UnityARPlayerActivity extends UnityPlayerNativeActivity {
     }
 
     void setStereo(boolean stereo) {
-        // For Epson Moverio BT-200, enable stereo mode.
-        if (Build.MANUFACTURER.equals("EPSON") && Build.MODEL.equals("embt2")) {
-            //int dimension = (stereo ? DIMENSION_3D : DIMENSION_2D);
-            //set2d3d(dimension);
-            mDisplayControl.setMode(stereo ? DisplayControl.DISPLAY_MODE_3D : DisplayControl.DISPLAY_MODE_2D, stereo); // Last parameter is 'toast'.
-        }
     }
 }
 

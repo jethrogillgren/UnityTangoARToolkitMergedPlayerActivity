@@ -25,7 +25,6 @@ android {
 dependencies {
     compile project(':aRBaseLib-release')
     compile project(':classes')
-    compile project(':BT200Ctrl')
     compile 'com.android.support:support-v4:23.3.0'
 }
 
