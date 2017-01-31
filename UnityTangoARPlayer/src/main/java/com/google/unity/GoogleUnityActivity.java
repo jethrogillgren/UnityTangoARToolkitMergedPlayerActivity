@@ -24,8 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.SurfaceHolder.Callback2;
 import android.view.ViewGroup.LayoutParams;
-import com.google.unity.R.id;
-import com.google.unity.R.layout;
+
 import com.unity3d.player.UnityPlayer;
 
 public class GoogleUnityActivity extends Activity implements OnRequestPermissionsResultCallback {
@@ -39,7 +38,7 @@ public class GoogleUnityActivity extends Activity implements OnRequestPermission
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(1);
         super.onCreate(savedInstanceState);
-        this.setContentView(layout.activity_main);
+        this.setContentView(R.layout.activity_main);
         this.getWindow().takeSurface((Callback2)null);
         this.setTheme(android.R.style.Theme_NoTitleBar_Fullscreen);
         this.getWindow().setFormat(4);
@@ -75,12 +74,17 @@ public class GoogleUnityActivity extends Activity implements OnRequestPermission
     public void showAndroidViewLayer(final View view) {
         this.runOnUiThread(new Runnable() {
             public void run() {
-                ViewGroup androidViewContainer = (ViewGroup)GoogleUnityActivity.this.findViewById(id.android_view_container);
-                androidViewContainer.removeAllViews();
-                androidViewContainer.addView(view, new LayoutParams(-1, -1));
+                ViewGroup androidViewContainer = (ViewGroup)GoogleUnityActivity.this.findViewById(R.id.android_view_container);
+                    if(androidViewContainer != null) {
+                        androidViewContainer.removeAllViews();
+                        androidViewContainer.addView(view, new LayoutParams(-1, -1));
+                    } else {
+                        logAndroidErrorMessage( "J# Unable to find the ViewGroup for " + R.id.android_view_container );
+                    }
             }
         });
     }
+
 
     public void launchIntent(String packageName, String className, String[] args, int requestcode) {
         Intent intent = new Intent();
