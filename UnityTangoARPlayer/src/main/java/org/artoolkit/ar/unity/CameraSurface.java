@@ -66,7 +66,7 @@ public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback
         NativeInterface.loadNativeLibrary();
     }
 
-    private static final String TAG = "CameraSurface";
+    private static final String TAG = "J# CameraSurface";
     private Camera camera;
     private int mWidth = 0;
     private int mHeight = 0;

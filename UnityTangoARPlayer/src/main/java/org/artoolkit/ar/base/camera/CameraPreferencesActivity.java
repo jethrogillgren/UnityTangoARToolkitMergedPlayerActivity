@@ -103,7 +103,7 @@ import java.util.List;
 
 public class CameraPreferencesActivity extends PreferenceActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
-    public static final String TAG = "CameraPreferences";
+    public static final String TAG = "J# CameraPreferences";
 
     private int cameraCount;
     private ListPreference cameraIndexPreference;

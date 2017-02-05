@@ -49,7 +49,7 @@ public class NativeInterface {
     /**
      * Android logging tag for this class.
      */
-    private static final String TAG = "NativeInterface";
+    private static final String TAG = "J# NativeInterface";
 
     /**
      * The name of the native ARToolKit library.

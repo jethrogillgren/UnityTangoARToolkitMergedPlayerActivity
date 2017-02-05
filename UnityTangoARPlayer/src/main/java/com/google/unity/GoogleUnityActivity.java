@@ -74,7 +74,7 @@ public class GoogleUnityActivity extends Activity implements OnRequestPermission
     public void showAndroidViewLayer(final View view) {
         this.runOnUiThread(new Runnable() {
             public void run() {
-                ViewGroup androidViewContainer = (ViewGroup)GoogleUnityActivity.this.findViewById(R.id.android_view_container);
+                ViewGroup androidViewContainer = (ViewGroup) GoogleUnityActivity.this.findViewById(R.id.android_view_container);
                     if(androidViewContainer != null) {
                         androidViewContainer.removeAllViews();
                         androidViewContainer.addView(view, new LayoutParams(-1, -1));
