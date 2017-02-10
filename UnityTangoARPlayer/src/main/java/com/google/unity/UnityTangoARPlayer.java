@@ -7,7 +7,14 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.graphics.YuvImage;
+import android.graphics.Rect;
 import android.content.Context;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
+import java.io.IOException;
 
 import android.graphics.ImageFormat;
 
@@ -34,8 +41,8 @@ public class UnityTangoARPlayer extends GoogleUnityActivity {
 
     protected final static String TAG = "J#  UnityTangoARPlayer";
 
-    private static  int mWidth = 1920;
-    private static  int mHeight = 1080;
+    private static  int mWidth = 1920/2/2;
+    private static  int mHeight = 1080/2/2;
     private static  boolean mCameraIsFrontFacing = true;
     private static  int mCameraIndex = 0;
 
@@ -94,13 +101,13 @@ public class UnityTangoARPlayer extends GoogleUnityActivity {
 
 
 
-        SurfaceView sv = findSurfaceView( this.mUnityPlayer.getView() );
-        if (sv == null) {
-            Log.w(TAG, "No SurfaceView found in Unity view hierarchy.");
-        } else {
-            Log.i(TAG, "Found SurfaceView " + sv.toString() + ".   I would set its media overlay if I wasn't a chicken");
-//            sv.setZOrderMediaOverlay(true);
-        }
+//        SurfaceView sv = findSurfaceView( this.mUnityPlayer.getView() );
+//        if (sv == null) {
+//            Log.w(TAG, "No SurfaceView found in Unity view hierarchy.");
+//        } else {
+//            Log.i(TAG, "Found SurfaceView " + sv.toString() + ".   I would set its media overlay if I wasn't a chicken");
+////            sv.setZOrderMediaOverlay(true);
+//        }
 
         foo();
     }
@@ -127,7 +134,7 @@ public class UnityTangoARPlayer extends GoogleUnityActivity {
     // call this method from unity
     public static void foo(){
 
-        Log.i(TAG, "Foo FFMPEG");
+        Log.i(TAG, "Foo");
 
 //        FFmpeg ffmpeg = FFmpeg.getInstance(context);
 //        try {
@@ -185,9 +192,25 @@ public class UnityTangoARPlayer extends GoogleUnityActivity {
      */
     public static void arwAcceptVideoImage_(byte[] image, int width, int height, int cameraIndex, boolean cameraIsFrontFacing ) {
 
-        YuvImage yuvImage = new YuvImage(image, android.graphics.ImageFormat.NV21, width, height, null);//TODO
+//        YuvImage yuvImage = new YuvImage(image, android.graphics.ImageFormat.NV21, width, height, null);//TODO
+//        // Convert YuV to Jpeg
+//        Rect rect = new Rect(0, 0, width/24, height/24);
+//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//        yuvImage.compressToJpeg(rect, 50, outputStream);
+//        String jpegDir = "/storage/emulated/0/Android/data/com.jethro.tangoAR/TangoYV12_Converted.jpeg";
+//        try(OutputStream foutputStream = new FileOutputStream(jpegDir)) {
+//            outputStream.writeTo(foutputStream);
+//            Log.i(TAG, "Wrote JPEG to: " + jpegDir );
+//        } catch (IOException e) {
+//            Log.i(TAG, "Error: " + e.getMessage() );
+//        }
 
+//        long startTime = System.nanoTime();
         NativeInterface.arwAcceptVideoImage(image,  width,  height,  cameraIndex, cameraIsFrontFacing);
+//        long endTime = System.nanoTime();
+//
+//        long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+//        Log.i(TAG, "NDK call Duration: " + duration/1000000 + "ms");
     }
 
     public View getAndroidViewLayer() {
